@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inside iframe</title>
+</head>
+<body>
+    <h1>Iframe content</h1>
+    <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Enter your message" required />
+        <button type="submit">Submit from iframe</button>
+    </form>
+
+    <script>document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const input = document.getElementById('messageInput').value;
+            // Send message to parent window
+            window.parent.postMessage({ type: 'inputMessage', value: input }, '*');
+        });</script>
+</body>
+</html>
